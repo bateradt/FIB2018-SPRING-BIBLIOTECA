@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="UTF-8" />
+<title>Cadastro de Livro</title>
+</head>
+<body>
+
+	<form id="livroForm" th:action="@{/livros/(form)}" method="post"
+		th:object="${livro}" action="#">
+
+		Título:<input type="text" th:field="*{titulo}" /><br /> Quantidade: <input
+			type="text" th:field="*{quantidade}" /><br /> Total de Páginas: <input
+			type="text" th:field="*{quantidadePaginas}" /><br /> 
+			<input type="submit" value="gravar" />
+	</form>
+</body>
+</html>

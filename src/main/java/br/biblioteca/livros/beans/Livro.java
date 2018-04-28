@@ -33,6 +33,13 @@ public class Livro {
 	@Column(name = "LIV_QUANTIDADE")
 	private int quantidade;
 	
+	public int getQuantidadePaginas() {
+		return quantidadePaginas;
+	}
+	public void setQuantidadePaginas(int quantidadePaginas) {
+		this.quantidadePaginas = quantidadePaginas;
+	}
+
 	@Column(name = "LIV_QUANTIDADEPAGINAS")
 	private int quantidadePaginas;
 	

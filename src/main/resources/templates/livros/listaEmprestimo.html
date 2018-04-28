@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de Empréstimos</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Título emprestado</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${emprestimos.empty}">
+				<td colspan="2">Sem empréstimo</td>
+			</tr>
+
+			<tr th:each="emprestimo : ${emprestimos}">
+				<td th:text="${emprestimo.idEmprestimo}">1</td>
+				<td><a href="#" th:href="@{'/emprestimos/'+${emprestimo.idEmprestimo}}"
+					th:text="${emprestimo.livro.titulo}"> Livro </a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

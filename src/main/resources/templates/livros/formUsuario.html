@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="UTF-8" />
+<title>Cadastro de Usuários</title>
+</head>
+<body>
+	<form id="usuarioForm" th:action="@{/usuarios/(formUsuario)}" method="post"
+		th:object="${usuario}" action="#">
+
+		Nome de Usuário: <input type="text" th:field="*{userName}" /><br /> 
+		E-mail: <input type="text" th:field="*{email}" /><br /> 
+		Senha: <input type="text" th:field="*{password}" /><br />
+		 
+		<input type="submit" value="gravar" />
+	</form>
+</body>
+</html>
