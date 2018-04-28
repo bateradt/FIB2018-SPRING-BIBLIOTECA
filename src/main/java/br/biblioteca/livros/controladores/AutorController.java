@@ -7,33 +7,33 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.biblioteca.livros.beans.Livro;
-import br.biblioteca.livros.services.LivroService;
+import br.biblioteca.livros.beans.Autor;
+import br.biblioteca.livros.services.AutorService;
 
 @Controller
-public class LivroController {
+public class AutorController {
 	
 	//public static final 
 	
 	@Autowired
-	private LivroService livroService;
+	private AutorService autorService;
 	
-	@RequestMapping("/")
-	public ModelAndView home() {
-		return new ModelAndView("Index");
-	}
+//	@RequestMapping("/")
+//	public ModelAndView home() {
+//		return new ModelAndView("Index");
+//	}
 	
-	@RequestMapping("/livros")
-	public ModelAndView livros() {
+	@RequestMapping("/autor")
+	public ModelAndView autor() {
 		
-    List<Livro> livros = livroService.listaLivros();
+    List<Autor> autores = autorService.listaAutores();
 		
 //		for (Livro livro : livros) {
 //			
 //			System.out.println(livro.getNome());
 //		}
 		
-	  return new ModelAndView("livros/livros", "livros", livros);	
+	  return new ModelAndView("livros/listaAutor", "autores", autores);	
 	}
 
 }

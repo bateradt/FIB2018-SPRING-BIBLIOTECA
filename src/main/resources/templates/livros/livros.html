@@ -19,9 +19,9 @@
 			</tr>
 
 			<tr th:each="livro : ${livros}">
-				<td th:text="${livro.id}">1</td>
-				<td><a href="#" th:href="@{'/livros/'+${livro.id}}"
-					th:text="${livro.nome}"> Título </a></td>
+				<td th:text="${livro.idLivro}">1</td>
+				<td><a href="#" th:href="@{'/livros/'+${livro.idLivro}}"
+					th:text="${livro.titulo}"> Título </a></td>
 			</tr>
 		</tbody>
 	</table>
