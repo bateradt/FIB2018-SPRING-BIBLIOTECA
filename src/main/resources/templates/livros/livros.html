@@ -1,29 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
 <head>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta charset="UTF-8" />
 <title>Lista de Livros</title>
 </head>
 <body>
-	<table>
-		<thead>
-			<tr>
-				<td>ID</td>
-				<td>Título</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:if="${livros.empty}">
-				<td colspan="2">Sem livros</td>
-			</tr>
+	<h1 layout:fragment="header">
+		<a th:href="@{/livros/novo}" class="btn btn-sm btn-info"><i
+			class="glyphicon glyphicon-plus"></i></a> Livros
+	</h1>
 
-			<tr th:each="livro : ${livros}">
-				<td th:text="${livro.idLivro}">1</td>
-				<td><a href="#" th:href="@{'/livros/'+${livro.idLivro}}"
-					th:text="${livro.titulo}"> Título </a></td>
-			</tr>
-		</tbody>
-	</table>
+	<div layout:fragment="content" class="container">
+		<table class="table">
+			<thead>
+				<tr>
+				    <td></td>
+				    <td></td>
+				    
+					<td>ID</td>
+					<td>Título</td>
+					<td>Quantidade</td>
+					<td>Páginas</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${livros.empty}">
+					<td colspan="2">Sem livros</td>
+				</tr>
+
+				<tr th:each="livro : ${livros}">
+				
+				
+					<td  th:text="${livro.capa}">capa</td>
+				
+				    <td>
+					<img th:if="${livro.capa}" th:src="@{'/' + ${livro.capa}}" width="100px" />
+					<img th:unless="${livro.capa}" th:src="@{'../img/semfoto.jpg'}" width="100px" />
+					</td>
+					<td th:text="${livro.idLivro}">1</td>
+					<td><a href="#" th:href="@{'/livros/'+${livro.idLivro}}"
+						th:text="${livro.titulo}"> Título </a></td>
+					<td><a href="#" th:href="@{'/livros/'+${livro.idLivro}}"
+						th:text="${livro.quantidade}"> Quantidade </a></td>
+					<td><a href="#" th:href="@{'/livros/'+${livro.idLivro}}"
+						th:text="${livro.quantidadePaginas}"> Páginas </a></td>
+
+					<td><a href="#"
+						th:href="@{'/livros/alterar/'+${livro.idLivro}}">
+							<button type="button" class="btn btn-primary">Alterar</button>
+					</a></td>
+
+					<td><a href="#"
+						th:href="@{'/livros/excluir/'+${livro.idLivro}}">
+							<button type="button" class="btn btn-danger">Excluir</button>
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

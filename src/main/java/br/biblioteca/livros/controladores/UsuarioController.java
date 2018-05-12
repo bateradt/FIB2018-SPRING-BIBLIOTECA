@@ -27,7 +27,7 @@ public class UsuarioController {
 	return new ModelAndView("livros/listaUsuario", "usuarios", usuarios);	
 	}
 	
-	@GetMapping("livros/novoUsuario")
+	@GetMapping("usuario/novoUsuario")
 	public String createForm(@ModelAttribute Usuario usuario) {
 		return "livros/formUsuario";
 	}

@@ -20,13 +20,21 @@ public class LivroService {
 	AutorRepository autorRepository;
 	
 	public List<Livro> listaLivros(){
-		return livroRepository.findAll();
+		return this.livroRepository.findAll();
 	}
 	
 	public Livro salvaLivro(Livro livro) {		
 		Autor autor = autorRepository.findOne(1L);
 		livro.setAutor(autor);
-		return livroRepository.save(livro);
+		return this.livroRepository.save(livro);
+	}
+	
+	public Livro buscaLivro(Long id) {		
+		return this.livroRepository.findOne(id);
+	}
+	
+	public void deletaLivro(Long id) {			
+		this.livroRepository.delete(id);
 	}
 	
 }

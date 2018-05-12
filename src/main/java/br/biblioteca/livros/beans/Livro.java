@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -25,24 +28,26 @@ public class Livro {
 	private Long idLivro;
 	
 	@Column(name = "LIV_TITULO", nullable = false, length = 45)
+	@NotNull
+	@Size(min = 2, max = 45)
 	private String titulo;
 	
 	@Column(name = "LIV_FOTO", nullable = true, length = 200)
 	private String foto;
 	
 	@Column(name = "LIV_QUANTIDADE")
+	@NotNull
+	@Min(1)
 	private int quantidade;
 	
-	public int getQuantidadePaginas() {
-		return quantidadePaginas;
-	}
-	public void setQuantidadePaginas(int quantidadePaginas) {
-		this.quantidadePaginas = quantidadePaginas;
-	}
-
 	@Column(name = "LIV_QUANTIDADEPAGINAS")
+	@NotNull
+	@Min(1)
 	private int quantidadePaginas;
 	
+	@Column(name = "LIV_CAPA", nullable = false, length = 500)
+	private String capa;
+		
 	@ManyToOne
 	@JoinColumn(name = "ID_AUTOR")
 	@Cascade(CascadeType.SAVE_UPDATE)
@@ -105,6 +110,19 @@ public class Livro {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	} 
+		
+	public String getCapa() {
+		return capa;
+	}
+	public void setCapa(String capa) {
+		this.capa = capa;
+	}
+	public int getQuantidadePaginas() {
+		return quantidadePaginas;
+	}
+	public void setQuantidadePaginas(int quantidadePaginas) {
+		this.quantidadePaginas = quantidadePaginas;
+	}
 
 	@Override
 	public String toString() {

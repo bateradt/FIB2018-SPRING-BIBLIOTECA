@@ -24,7 +24,7 @@ public class Autor {
 	private Long idAutor;
 	
 	@Column(name = "AUT_NOME", nullable = false, length = 45)
-	private String Nome;
+	private String nome;
 	
 	@OneToMany(mappedBy = "autor", fetch = FetchType.EAGER)
 	@Cascade(CascadeType.SAVE_UPDATE)
@@ -43,15 +43,15 @@ public class Autor {
 		this.idAutor = idAutor;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
-	public void setNome(String nome) {
-		Nome = nome;
+	public void setNome(String Nome) {
+		nome = Nome;
 	}
 	
 	@Override
 	public String toString() {
-		return "Autor [id=" + idAutor + ", nome=" + Nome + "]";
+		return "Autor [id=" + idAutor + ", nome=" + nome + "]";
 	}
 
 

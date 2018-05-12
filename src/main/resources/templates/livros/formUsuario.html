@@ -10,11 +10,13 @@
 	<form id="usuarioForm" th:action="@{/usuarios/(formUsuario)}" method="post"
 		th:object="${usuario}" action="#">
 
-		Nome de Usuário: <input type="text" th:field="*{userName}" /><br /> 
-		E-mail: <input type="text" th:field="*{email}" /><br /> 
-		Senha: <input type="text" th:field="*{password}" /><br />
+		Usuário.....: <input type="text" th:field="*{userName}" /><br /> 
+		<br/>
+		E-mail......: <input type="text" th:field="*{email}" /><br /> 
+		<br/>
+		Senha.......: <input type="password" th:field="*{password}" /><br />
 		 
-		<input type="submit" value="gravar" />
+		<input type="submit" value="Gravar" />
 	</form>
 </body>
 </html>
